@@ -8,9 +8,21 @@ public class GraphListener extends CymbolBaseListener {
     }
 
     public void exitCall(CymbolParser.CallContext ctx) {
-        String funcName = ctx.ID().getText();
-        // map current function to the callee
-        graph.edge(currentFunctionName, funcName);
+
+        String name = ctx.ID().getText();
+        if (currentFunctionName.equals(name)) {
+            if (ctx.getParent() instanceof CymbolParser.ReturnContext) {
+                graph.edgeEnd(currentFunctionName, name);
+                graph.nodesEnd.add(currentFunctionName);
+            } else {
+                graph.edgeNotEnd(currentFunctionName, name);
+                graph.nodesNotEnd.add(currentFunctionName);
+            }
+        }
+        else {
+            graph.edge(currentFunctionName,name);
+            graph.nodes.add(currentFunctionName);
+        }
     }
 }
 

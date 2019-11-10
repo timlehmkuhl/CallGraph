@@ -1,11 +1,27 @@
- graph(funcs, edgePairs) ::=<<
+ graph(nodesEnd, edgesEnd, nodesNotEnd, edgesNotEnd, edges, nodes) ::=<<
     digraph G {
-    ranksep=.25;
-    edge [arrowsize=.5]
-    node [shape=circle, fontname=\"ArialNarrow\",
-    fontsize=12, fixedsize=true, height=.45];
-    <funcs:{f | <f>; }>
-    <edgePairs:{edge| <edge.a> -> <edge.b>;}; separator="\n">
+    ranksep=.5;
+    edge [arrowsize=1]
+    node [shape=circle, fontsize=20,  height=.90];
+    <nodesEnd:{ item | <item>[style=filled color="green"];}>
+        <nodes:{item|<item>;}>
+        <nodesNotEnd:{ item | <item>[style=filled color="red"];}>
+        <edges.keys:{item| <black(edges, item)>}; separator="\n">
+        <edgesEnd.keys:{item| <greenEnd(edgesEnd, item)>}; separator="\n">
+        <edgesNotEnd.keys:{item| <redNotEnd(edgesNotEnd, item)>}; separator="\n">
 }
 
+ >>
+
+
+ greenEnd(edges, item) ::=<<
+ <edges.(item): {k|<item> -> <k>[color="green"];};separator="\n">
+ >>
+
+ redNotEnd(edges, item) ::=<<
+ <edges.(item): {k|<item> -> <k>[color="red"];};separator="\n">
+ >>
+
+ black(edges, item) ::=<<
+ <edges.(item): {k|<item> -> <k>;};separator="\n">
  >>

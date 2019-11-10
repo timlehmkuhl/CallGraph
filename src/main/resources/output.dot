@@ -1,0 +1,57 @@
+    digraph G {
+    ranksep=.5;
+    edge [arrowsize=1]
+    node [shape=circle, fontsize=20,  height=.90];
+    add[style=filled color="green"];add2[style=filled color="green"];ggT[style=filled color="green"];mcCarthy[style=filled color="green"];ackermann[style=filled color="green"];
+        main;identity;add;add2;sum;sum2;binomi;fact;ggT;kgV;fib;mcCarthy;ackermann;
+        sum[style=filled color="red"];sum2[style=filled color="red"];fact[style=filled color="red"];fib[style=filled color="red"];mcCarthy[style=filled color="red"];ackermann[style=filled color="red"];
+         main -> sum;
+         main -> sum2;
+         main -> binomi;
+         main -> fib;
+         main -> kgV;
+         main -> ackermann;
+         main -> mcCarthy;
+         
+         add -> identity;
+         
+         add2 -> identity;
+         
+         sum -> add;
+         
+         sum2 -> add2;
+         
+         binomi -> fact;
+         binomi -> fact;
+         binomi -> fact;
+         
+         kgV -> ggT;
+         
+         add -> add[color="green"];
+         
+         add2 -> add2[color="green"];
+         
+         ggT -> ggT[color="green"];
+         ggT -> ggT[color="green"];
+         
+         mcCarthy -> mcCarthy[color="green"];
+         
+         ackermann -> ackermann[color="green"];
+         ackermann -> ackermann[color="green"];
+         
+         sum -> sum[color="red"];
+         
+         sum2 -> sum2[color="red"];
+         
+         fact -> fact[color="red"];
+         
+         fib -> fib[color="red"];
+         fib -> fib[color="red"];
+         
+         mcCarthy -> mcCarthy[color="red"];
+         
+         ackermann -> ackermann[color="red"];
+         
+}
+
+ 

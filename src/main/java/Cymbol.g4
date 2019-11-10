@@ -23,12 +23,12 @@ formalParameter
 
 block:  '{' stat* '}' ;   // possibly empty statement block
 
-stat:   block
-    |   varDecl
-    |   'if' expr stat ('else' stat)?
-    |   'return' expr? ';'
-    |   expr '=' expr ';' // assignment
-    |   expr ';'          // func call
+stat:   block       # NoReturn
+    |   varDecl     # NoReturn
+    |   'if' expr stat ('else' stat)? # NoReturn
+    |   'return' expr? ';'              # Return
+    |   expr '=' expr ';'  # NoReturn // assignment
+    |   expr ';'          # NoReturn // func call
     ;
 
 /* expr below becomes the following non-left recursive rule:

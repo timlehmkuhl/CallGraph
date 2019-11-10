@@ -1,12 +1,18 @@
-import org.antlr.v4.runtime.ANTLRInputStream;
+import guru.nidi.graphviz.engine.Format;
+import guru.nidi.graphviz.engine.Graphviz;
+import guru.nidi.graphviz.engine.GraphvizV8Engine;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -22,10 +28,28 @@ public class Main {
         ParseTreeWalker walker = new ParseTreeWalker();
         GraphListener collector = new GraphListener();
         walker.walk(collector, tree);
-        System.out.println(collector.graph.toString());
-        //  System.out.println(collector.graph.toDOT());
 
-        // Here's another example that uses StringTemplate to generate output
-        System.out.println(collector.graph.toST().render());
+
+        String output = collector.graph.toST().render();
+      //  System.out.println(output);
+
+        createFile(output);
+        graphviz(output);
     }
+
+    public static void createFile(String str) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("./src/main/resources/output.dot"));
+        writer.write(str);
+        writer.close();
+    }
+
+    public static void graphviz(String str) throws IOException {
+        File targetFile = new File(".\\src\\main\\resources\\Graph.png");
+        Graphviz.useEngine(new GraphvizV8Engine());
+        Graphviz.fromString(str).render(Format.PNG).toFile(targetFile);
+        Desktop.getDesktop().open(targetFile);
+    }
+
+
+
 }
