@@ -32,9 +32,10 @@ public class Main {
 
         String output = collector.graph.toST().render();
       //  System.out.println(output);
-
+        System.out.println(output);
         createFile(output);
         graphviz(output);
+
     }
 
     public static void createFile(String str) throws IOException {

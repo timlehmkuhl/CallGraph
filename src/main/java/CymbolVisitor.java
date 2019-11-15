@@ -66,110 +66,19 @@ public interface CymbolVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitReturn(CymbolParser.ReturnContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Call}
+	 * Visit a parse tree produced by the {@code NonCallExpr}
 	 * labeled alternative in {@link CymbolParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCall(CymbolParser.CallContext ctx);
+	T visitNonCallExpr(CymbolParser.NonCallExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Lower}
+	 * Visit a parse tree produced by the {@code CallExpr}
 	 * labeled alternative in {@link CymbolParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLower(CymbolParser.LowerContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code NotEqual}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNotEqual(CymbolParser.NotEqualContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code AddSub}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAddSub(CymbolParser.AddSubContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Var}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVar(CymbolParser.VarContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Parens}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitParens(CymbolParser.ParensContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Index}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitIndex(CymbolParser.IndexContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Int}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInt(CymbolParser.IntContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code MultDiv}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMultDiv(CymbolParser.MultDivContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Not}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNot(CymbolParser.NotContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code GreaterEquals}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGreaterEquals(CymbolParser.GreaterEqualsContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Equal}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEqual(CymbolParser.EqualContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code LowerEquals}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLowerEquals(CymbolParser.LowerEqualsContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Greater}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGreater(CymbolParser.GreaterContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Negate}
-	 * labeled alternative in {@link CymbolParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNegate(CymbolParser.NegateContext ctx);
+	T visitCallExpr(CymbolParser.CallExprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CymbolParser#exprList}.
 	 * @param ctx the parse tree

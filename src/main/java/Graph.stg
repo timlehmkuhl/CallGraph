@@ -1,27 +1,39 @@
- graph(nodesEnd, edgesEnd, nodesNotEnd, edgesNotEnd, edges, nodes) ::=<<
-    digraph G {
+ graph(nodes, nodesEndrekursiv, nodesRekursiv, edges, edgesEndrekursiv, edgesRekursiv) ::=<<
+ digraph G {
     ranksep=.5;
-    edge [arrowsize=1]
+    edge [arrowsize=1];
     node [shape=circle, fontsize=20,  height=.90];
-    <nodesEnd:{ item | <item>[style=filled color="green"];}>
-        <nodes:{item|<item>;}>
-        <nodesNotEnd:{ item | <item>[style=filled color="red"];}>
-        <edges.keys:{item| <black(edges, item)>}; separator="\n">
-        <edgesEnd.keys:{item| <greenEnd(edgesEnd, item)>}; separator="\n">
-        <edgesNotEnd.keys:{item| <redNotEnd(edgesNotEnd, item)>}; separator="\n">
+
+    /* Nodes */
+    <nodes:{ item | <item>;};separator="\n">
+
+    /* Nodes Endrekursiv */
+    <nodesEndrekursiv:{ item | <item>[style=filled color=green];};separator="\n">
+
+    /* Nodes Rekursiv */
+    <nodesRekursiv:{ item | <item>[style=filled color=red];};separator="\n">
+
+    /* Edges */
+    <edges.keys:{item| <edgesSub(edges, item)>}>
+
+    /* Edges Endrekursiv */
+    <edgesEndrekursiv.keys:{item| <edgesEndrekursivSub(edgesEndrekursiv, item)>}>
+
+     /* Edges Rekursiv */
+    <edgesRekursiv.keys:{item| <edgesRekursivSub(edgesRekursiv, item)>}>
 }
 
  >>
 
 
- greenEnd(edges, item) ::=<<
- <edges.(item): {k|<item> -> <k>[color="green"];};separator="\n">
+ edgesEndrekursivSub(edges, item) ::=<<
+ <edges.(item): {k|<item> -> <k>[color=green];};separator="\n">
  >>
 
- redNotEnd(edges, item) ::=<<
- <edges.(item): {k|<item> -> <k>[color="red"];};separator="\n">
+ edgesRekursivSub(edges, item) ::=<<
+ <edges.(item): {k|<item> -> <k>[color=red];};separator="\n">
  >>
 
- black(edges, item) ::=<<
+ edgesSub(edges, item) ::=<<
  <edges.(item): {k|<item> -> <k>;};separator="\n">
  >>

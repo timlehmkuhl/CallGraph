@@ -48,21 +48,21 @@ expr[int _p]
     ;
 */
 
-expr:   ID '(' exprList? ')'    # Call
-    |   expr '[' expr ']'       # Index
-    |   '-' expr                # Negate
-    |   '!' expr                # Not
-    |   expr ('*'|'/') expr     # MultDiv
-    |   expr ('+'|'-') expr     # AddSub
-    |   expr '==' expr          # Equal
-    |   expr '!=' expr          # NotEqual
-    |   expr '<' expr           # Lower
-    |   expr '>' expr           # Greater
-    |   expr '>=' expr          # GreaterEquals
-    |   expr '<=' expr          # LowerEquals
-    |   ID                      # Var
-    |   INT                     # Int
-    |   '(' expr ')'            # Parens
+expr:   ID '(' exprList? ')'    # CallExpr
+    |   expr '[' expr ']'       # NonCallExpr
+    |   '-' expr                # NonCallExpr
+    |   '!' expr                # NonCallExpr
+    |   expr ('*'|'/') expr     # NonCallExpr
+    |   expr ('+'|'-') expr     # NonCallExpr
+    |   expr '==' expr          # NonCallExpr
+    |   expr '!=' expr          # NonCallExpr
+    |   expr '<' expr           # NonCallExpr
+    |   expr '>' expr           # NonCallExpr
+    |   expr '>=' expr          # NonCallExpr
+    |   expr '<=' expr          # NonCallExpr
+    |   ID                      # NonCallExpr
+    |   INT                     # NonCallExpr
+    |   '(' expr ')'            # NonCallExpr
     ;
 
 exprList : expr (',' expr)* ;   // arg list

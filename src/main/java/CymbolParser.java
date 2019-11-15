@@ -720,312 +720,47 @@ public class CymbolParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class CallContext extends ExprContext {
+	public static class NonCallExprContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public TerminalNode ID() { return getToken(CymbolParser.ID, 0); }
+		public TerminalNode INT() { return getToken(CymbolParser.INT, 0); }
+		public NonCallExprContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNonCallExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNonCallExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitNonCallExpr(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CallExprContext extends ExprContext {
 		public TerminalNode ID() { return getToken(CymbolParser.ID, 0); }
 		public ExprListContext exprList() {
 			return getRuleContext(ExprListContext.class,0);
 		}
-		public CallContext(ExprContext ctx) { copyFrom(ctx); }
+		public CallExprContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterCall(this);
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterCallExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitCall(this);
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitCallExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitCall(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class LowerContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public LowerContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterLower(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitLower(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitLower(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class NotEqualContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public NotEqualContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNotEqual(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNotEqual(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitNotEqual(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class AddSubContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public AddSubContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterAddSub(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitAddSub(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitAddSub(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VarContext extends ExprContext {
-		public TerminalNode ID() { return getToken(CymbolParser.ID, 0); }
-		public VarContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterVar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitVar(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitVar(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class ParensContext extends ExprContext {
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
-		}
-		public ParensContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterParens(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitParens(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitParens(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class IndexContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public IndexContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterIndex(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitIndex(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitIndex(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class IntContext extends ExprContext {
-		public TerminalNode INT() { return getToken(CymbolParser.INT, 0); }
-		public IntContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterInt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitInt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitInt(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class MultDivContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public MultDivContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterMultDiv(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitMultDiv(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitMultDiv(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class NotContext extends ExprContext {
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
-		}
-		public NotContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNot(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNot(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitNot(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class GreaterEqualsContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public GreaterEqualsContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterGreaterEquals(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitGreaterEquals(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitGreaterEquals(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class EqualContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public EqualContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterEqual(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitEqual(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitEqual(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class LowerEqualsContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public LowerEqualsContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterLowerEquals(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitLowerEquals(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitLowerEquals(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class GreaterContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public GreaterContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterGreater(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitGreater(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitGreater(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class NegateContext extends ExprContext {
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
-		}
-		public NegateContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNegate(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNegate(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitNegate(this);
+			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitCallExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1051,7 +786,7 @@ public class CymbolParser extends Parser {
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				{
-				_localctx = new CallContext(_localctx);
+				_localctx = new CallExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
@@ -1075,7 +810,7 @@ public class CymbolParser extends Parser {
 				break;
 			case 2:
 				{
-				_localctx = new NegateContext(_localctx);
+				_localctx = new NonCallExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(96);
@@ -1086,7 +821,7 @@ public class CymbolParser extends Parser {
 				break;
 			case 3:
 				{
-				_localctx = new NotContext(_localctx);
+				_localctx = new NonCallExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(98);
@@ -1097,7 +832,7 @@ public class CymbolParser extends Parser {
 				break;
 			case 4:
 				{
-				_localctx = new VarContext(_localctx);
+				_localctx = new NonCallExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(100);
@@ -1106,7 +841,7 @@ public class CymbolParser extends Parser {
 				break;
 			case 5:
 				{
-				_localctx = new IntContext(_localctx);
+				_localctx = new NonCallExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(101);
@@ -1115,7 +850,7 @@ public class CymbolParser extends Parser {
 				break;
 			case 6:
 				{
-				_localctx = new ParensContext(_localctx);
+				_localctx = new NonCallExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(102);
@@ -1141,7 +876,7 @@ public class CymbolParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 					case 1:
 						{
-						_localctx = new MultDivContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(108);
 						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
@@ -1161,7 +896,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new AddSubContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(111);
 						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
@@ -1181,7 +916,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 3:
 						{
-						_localctx = new EqualContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(114);
 						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
@@ -1193,7 +928,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 4:
 						{
-						_localctx = new NotEqualContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(117);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
@@ -1205,7 +940,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 5:
 						{
-						_localctx = new LowerContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(120);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
@@ -1217,7 +952,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 6:
 						{
-						_localctx = new GreaterContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(123);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
@@ -1229,7 +964,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 7:
 						{
-						_localctx = new GreaterEqualsContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(126);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
@@ -1241,7 +976,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 8:
 						{
-						_localctx = new LowerEqualsContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(129);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
@@ -1253,7 +988,7 @@ public class CymbolParser extends Parser {
 						break;
 					case 9:
 						{
-						_localctx = new IndexContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new NonCallExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(132);
 						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");

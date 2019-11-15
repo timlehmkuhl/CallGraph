@@ -14,32 +14,32 @@ public class CallGraph {
         Set<String> nodes = new OrderedHashSet<String>(); // list of functions
         MultiMap<String, String> edges = new MultiMap<String,String>();
 
-        Set<String> nodesEnd = new OrderedHashSet<String>(); // list of functions
-        MultiMap<String, String> edgesEnd = new MultiMap<String,String>();
+        Set<String> nodesEndrekursiv = new OrderedHashSet<String>(); // list of functions
+        MultiMap<String, String> edgesEndrekursiv = new MultiMap<String,String>();
 
-        Set<String> nodesNotEnd = new OrderedHashSet<String>(); // list of functions
-        MultiMap<String, String> edgesNotEnd = new MultiMap<String,String>();
+        Set<String> nodesRekursiv = new OrderedHashSet<String>(); // list of functions
+        MultiMap<String, String> edgesRekursiv = new MultiMap<String,String>();
 
 
         public void edge(String source, String target) {
             edges.map(source, target);
         }
 
-        public void edgeEnd(String source, String target) {
-            edgesEnd.map(source, target);
+        public void edgeEndrekursiv(String source, String target) {
+            edgesEndrekursiv.map(source, target);
         }
 
-        public void edgeNotEnd(String source, String target) {
-            edgesNotEnd.map(source, target);
+        public void edgeRekursiv(String source, String target) {
+            edgesRekursiv.map(source, target);
         }
 
         public ST toST() {
             STGroup templates = new STGroupFile(".\\src\\main\\java\\Graph.stg");
             ST st = templates.getInstanceOf("graph");
-            st.add("nodesEnd", nodesEnd);
-            st.add("edgesEnd",edgesEnd);
-            st.add("nodesNotEnd",nodesNotEnd);
-            st.add("edgesNotEnd",edgesNotEnd);
+            st.add("nodesEndrekursiv", nodesEndrekursiv);
+            st.add("edgesEndrekursiv", edgesEndrekursiv);
+            st.add("nodesRekursiv", nodesRekursiv);
+            st.add("edgesRekursiv", edgesRekursiv);
             st.add("edges", edges);
             st.add("nodes", nodes);
             return st;
