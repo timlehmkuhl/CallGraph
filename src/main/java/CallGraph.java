@@ -20,6 +20,9 @@ public class CallGraph {
         Set<String> nodesRekursiv = new OrderedHashSet<String>(); // list of functions
         MultiMap<String, String> edgesRekursiv = new MultiMap<String,String>();
 
+        public String toString() {
+            return "edges: "+edges.toString()+", functions: "+ nodes;
+        }
 
         public void edge(String source, String target) {
             edges.map(source, target);
@@ -37,10 +40,10 @@ public class CallGraph {
             STGroup templates = new STGroupFile(".\\src\\main\\java\\Graph.stg");
             ST st = templates.getInstanceOf("graph");
             st.add("nodesEndrekursiv", nodesEndrekursiv);
-            st.add("edgesEndrekursiv", edgesEndrekursiv);
+            st.add("edgesEndrekursiv", edgesEndrekursiv.getPairs());
             st.add("nodesRekursiv", nodesRekursiv);
-            st.add("edgesRekursiv", edgesRekursiv);
-            st.add("edges", edges);
+            st.add("edgesRekursiv", edgesRekursiv.getPairs());
+            st.add("edges", edges.getPairs());
             st.add("nodes", nodes);
             return st;
         }

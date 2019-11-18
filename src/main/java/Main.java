@@ -33,12 +33,12 @@ public class Main {
         String output = collector.graph.toST().render();
       //  System.out.println(output);
         System.out.println(output);
-        createFile(output);
+        dot(output);
         graphviz(output);
 
     }
 
-    public static void createFile(String str) throws IOException {
+    public static void dot(String str) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("./src/main/resources/output.dot"));
         writer.write(str);
         writer.close();

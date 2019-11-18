@@ -77,17 +77,17 @@ public interface CymbolListener extends ParseTreeListener {
 	 */
 	void exitBlock(CymbolParser.BlockContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code NoReturn}
+	 * Enter a parse tree produced by the {@code NonReturn}
 	 * labeled alternative in {@link CymbolParser#stat}.
 	 * @param ctx the parse tree
 	 */
-	void enterNoReturn(CymbolParser.NoReturnContext ctx);
+	void enterNonReturn(CymbolParser.NonReturnContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code NoReturn}
+	 * Exit a parse tree produced by the {@code NonReturn}
 	 * labeled alternative in {@link CymbolParser#stat}.
 	 * @param ctx the parse tree
 	 */
-	void exitNoReturn(CymbolParser.NoReturnContext ctx);
+	void exitNonReturn(CymbolParser.NonReturnContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Return}
 	 * labeled alternative in {@link CymbolParser#stat}.

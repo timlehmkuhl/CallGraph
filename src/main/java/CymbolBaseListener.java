@@ -99,13 +99,13 @@ public class CymbolBaseListener implements CymbolListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNoReturn(CymbolParser.NoReturnContext ctx) { }
+	@Override public void enterNonReturn(CymbolParser.NonReturnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNoReturn(CymbolParser.NoReturnContext ctx) { }
+	@Override public void exitNonReturn(CymbolParser.NonReturnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

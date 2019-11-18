@@ -24,42 +24,39 @@
     ackermann[style=filled color=red];
 
     /* Edges */
-     main -> sum;
-     main -> sum2;
-     main -> binomi;
-     main -> fib;
-     main -> kgV;
-     main -> ackermann;
-     main -> mcCarthy;
-     add -> identity;
-     add2 -> identity;
-     sum -> add;
-     sum2 -> add2;
-     binomi -> fact;
-     binomi -> fact;
-     binomi -> fact;
-     kgV -> ggT;
-     
+    main -> sum;
+    main -> sum2;
+    main -> binomi;
+    main -> fib;
+    main -> kgV;
+    main -> ackermann;
+    main -> mcCarthy;
+    add -> identity;
+    add2 -> identity;
+    sum -> add;
+    sum2 -> add2;
+    binomi -> fact;
+    binomi -> fact;
+    binomi -> fact;
+    kgV -> ggT;
 
     /* Edges Endrekursiv */
-     add -> add[color=green];
-     add2 -> add2[color=green];
-     ggT -> ggT[color=green];
-     ggT -> ggT[color=green];
-     mcCarthy -> mcCarthy[color=green];
-     ackermann -> ackermann[color=green];
-     ackermann -> ackermann[color=green];
-     
+    add -> add[color=green];
+    add2 -> add2[color=green];
+    ggT -> ggT[color=green];
+    ggT -> ggT[color=green];
+    mcCarthy -> mcCarthy[color=green];
+    ackermann -> ackermann[color=green];
+    ackermann -> ackermann[color=green];
 
      /* Edges Rekursiv */
-     sum -> sum[color=red];
-     sum2 -> sum2[color=red];
-     fact -> fact[color=red];
-     fib -> fib[color=red];
-     fib -> fib[color=red];
-     mcCarthy -> mcCarthy[color=red];
-     ackermann -> ackermann[color=red];
-     
+    sum -> sum[color=red];
+    sum2 -> sum2[color=red];
+    fact -> fact[color=red];
+    fib -> fib[color=red];
+    fib -> fib[color=red];
+    mcCarthy -> mcCarthy[color=red];
+    ackermann -> ackermann[color=red];
 }
 
  

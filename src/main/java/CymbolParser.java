@@ -550,7 +550,7 @@ public class CymbolParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class NoReturnContext extends StatContext {
+	public static class NonReturnContext extends StatContext {
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
 		}
@@ -569,18 +569,18 @@ public class CymbolParser extends Parser {
 		public StatContext stat(int i) {
 			return getRuleContext(StatContext.class,i);
 		}
-		public NoReturnContext(StatContext ctx) { copyFrom(ctx); }
+		public NonReturnContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNoReturn(this);
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNonReturn(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNoReturn(this);
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNonReturn(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitNoReturn(this);
+			if ( visitor instanceof CymbolVisitor ) return ((CymbolVisitor<? extends T>)visitor).visitNonReturn(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -613,7 +613,7 @@ public class CymbolParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
-				_localctx = new NoReturnContext(_localctx);
+				_localctx = new NonReturnContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(65);
@@ -621,7 +621,7 @@ public class CymbolParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new NoReturnContext(_localctx);
+				_localctx = new NonReturnContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(66);
@@ -629,7 +629,7 @@ public class CymbolParser extends Parser {
 				}
 				break;
 			case 3:
-				_localctx = new NoReturnContext(_localctx);
+				_localctx = new NonReturnContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(67);
@@ -673,7 +673,7 @@ public class CymbolParser extends Parser {
 				}
 				break;
 			case 5:
-				_localctx = new NoReturnContext(_localctx);
+				_localctx = new NonReturnContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(79);
@@ -687,7 +687,7 @@ public class CymbolParser extends Parser {
 				}
 				break;
 			case 6:
-				_localctx = new NoReturnContext(_localctx);
+				_localctx = new NonReturnContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(84);

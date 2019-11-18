@@ -14,26 +14,14 @@
     <nodesRekursiv:{ item | <item>[style=filled color=red];};separator="\n">
 
     /* Edges */
-    <edges.keys:{item| <edgesSub(edges, item)>}>
+    <edges:{edges| <edges.a> -> <edges.b>;};separator="\n">
 
     /* Edges Endrekursiv */
-    <edgesEndrekursiv.keys:{item| <edgesEndrekursivSub(edgesEndrekursiv, item)>}>
+    <edgesEndrekursiv:{edgesEndrekursiv| <edgesEndrekursiv.a> -> <edgesEndrekursiv.b>[color=green];};separator="\n">
 
      /* Edges Rekursiv */
-    <edgesRekursiv.keys:{item| <edgesRekursivSub(edgesRekursiv, item)>}>
+    <edgesRekursiv:{edgesRekursiv| <edgesRekursiv.a> -> <edgesRekursiv.b>[color=red];};separator="\n">
 }
-
  >>
 
 
- edgesEndrekursivSub(edges, item) ::=<<
- <edges.(item): {k|<item> -> <k>[color=green];};separator="\n">
- >>
-
- edgesRekursivSub(edges, item) ::=<<
- <edges.(item): {k|<item> -> <k>[color=red];};separator="\n">
- >>
-
- edgesSub(edges, item) ::=<<
- <edges.(item): {k|<item> -> <k>;};separator="\n">
- >>

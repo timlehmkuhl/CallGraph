@@ -52,12 +52,12 @@ public interface CymbolVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBlock(CymbolParser.BlockContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code NoReturn}
+	 * Visit a parse tree produced by the {@code NonReturn}
 	 * labeled alternative in {@link CymbolParser#stat}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNoReturn(CymbolParser.NoReturnContext ctx);
+	T visitNonReturn(CymbolParser.NonReturnContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Return}
 	 * labeled alternative in {@link CymbolParser#stat}.
